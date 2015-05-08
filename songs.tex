@@ -1,20 +1,9 @@
-\documentclass[fontsize=14pt]{scrartcl}
-
-% При переносах на другую строку предлоги не должны отрываться от следующего слова. Тире не отрывается от предыдущего слова. Для этого используется жёсткий пробел ~.
-
-% You can explicitly dictate how much of the text following a chord macro is to appear under the chord name by using braces. To exclude text that would normally be drawn under the chord, use a pair of braces that includes the chord macro.
-
-% Настроено для xelatex.
+\documentclass[fontsize=17pt]{scrartcl}
 
 \usepackage{songs}
 %\usepackage[lyric]{songs}  % Вывести только слова.
 
-% Убранные параметры, так как используется xelatex.
-%\usepackage[utf8]{inputenc}
-%\usepackage[T2A,T1]{fontenc}
-%\usepackage[russian]{babel}
-%\usepackage{DejaVuSans}
-
+% Настроено для xelatex.
 \usepackage{polyglossia}
 \setdefaultlanguage[spelling=modern]{russian}
 \setkeys{russian}{babelshorthands=true}
@@ -22,17 +11,28 @@
 \setsansfont{DejaVuSans}
 \setmonofont{DejaVuSansMono}
 
+% Убранные параметры, так как используется xelatex.
+%\usepackage[utf8]{inputenc}
+%\usepackage[T2A,T1]{fontenc}
+%\usepackage[russian]{babel}
+%\usepackage{DejaVuSans}
+
 \usepackage[hmargin=2cm, vmargin=1cm]{geometry}
 %\usepackage[papersize={12.8cm,9.6cm}, hmargin=1cm, vmargin=0cm]{geometry}
 %\geometry{tmargin=1cm,bmargin=1cm,lmargin=2cm,rmargin=2cm}
 
-\renewcommand{\lyricfont}{\sffamily \large}           % Шрифт слов без засечек и крупнее.
-\renewcommand{\scripturefont}{\sffamily \itshape}     % Шрифт цитат из Библии без засечек, наклонный.
-%\renewcommand{\printchord}[1]{\sffamily \itshape#1}  % Коррекция шрифта аккордов.
-\setlength{\songnumwidth}{2cm}                        % Увеличение поля для номера гимна.
+\renewcommand{\lyricfont}{\sffamily}
+\renewcommand{\scripturefont}{\sffamily\itshape}
+\renewcommand{\printchord}[1]{\sffamily\itshape#1}  % С этой командой аккорды держатся размера текста.
+\renewcommand{\stitlefont}{\sffamily\itshape\large}
+\renewcommand{\printsongnum}[1]{\sffamily\bfseries\large#1}
 
-\versesep=14pt
-\pagenumbering{gobble}    % Отмена нумерации страниц.
+%\renewcommand{\spngnumbgcolor}{white}
+
+\setlength{\songnumwidth}{2cm}  % Увеличил, иначе сообщения про переполнение \hbox появляются.
+
+\versesep=12pt
+\pagenumbering{gobble}  % Отмена нумерации страниц.
 \songcolumns{1}
 
 \DeclareLyricChar{\dots}  % Чтобы между словом и троеточием не ставилось тире из-за близкого аккорда.
@@ -41,6 +41,10 @@
 
 %\notenamesin{A}{B}{C}{D}{E}{F}{G}  % Замена названий аккордов (по желанию).
 %\notenamesout{ЛЯ}{СИ}{ДО}{РЕ}{МИ}{ФА}{СОЛЬ}
+
+% При переносах на другую строку предлоги не должны отрываться от следующего слова. Тире не отрывается от предыдущего слова. Для этого используется жёсткий пробел ~.
+
+% You can explicitly dictate how much of the text following a chord macro is to appear under the chord name by using braces. To exclude text that would normally be drawn under the chord, use a pair of braces that includes the chord macro.
 
 \begin{document}
 
@@ -172,6 +176,7 @@
 К новой ^жизни ^я вос^крес.
 \endverse
 \textnote{Припев}
+\gtab{D6}{XX0202:000102}
 \endsong
 
 \beginsong{Благ Господь}
@@ -414,7 +419,7 @@
 \endsong
 
 \beginsong{Когда смолкнет всё}
-\normalsize
+\small
 \beginverse\memorize
 \[C] Когда смолкнет \[G]всё, в тиши умолкнет \[F]звук,
 Я к Тебе при\[G]ду.
@@ -765,20 +770,20 @@
 \beginverse
 \[C] Нет подобного Те\[^Dm]бе,
 \[G] Нет подобного Те\[^C]бе, \[Am]
-Свое сердце Те\[Dm]бе отдаю, Иисус,
+Своё сердце Те\[Dm]бе отдаю, Иисус,
 \[G] Верю, любишь \[C]Ты меня!
 \endverse
 \textnote{2~раза}
 \beginverse
 ^ Нет подобного Те\[F]бе,
 ^ Нет подобного Те\[Em]бе, ^
-Свое сердце Те^бе отдаю, Иисус,
+Своё сердце Те^бе отдаю, Иисус,
 ^ Верю, любишь ^Ты меня!
 \endverse
 \beginverse
 ^ Нет подобного Те\[F]бе,
 ^ Нет подобного Те\[Em]бе, ^
-Свое сердце Те^бе отдаю,
+Своё сердце Те^бе отдаю,
 ^ Нет подобного Те\[F]бе! ^
 \endverse
 \endsong
@@ -904,7 +909,7 @@
 \endsong
 
 \beginsong{Вся земля хвалу поёт}
-\normalsize
+\small
 \beginverse*
 {\nolyrics Вступление: {\[C] \[G] \[Am] \[F]}~--- 2~раза}
 \endverse
@@ -1375,7 +1380,7 @@
 \endsong
 
 \beginsong{Сын человеческий}
-\normalsize
+\small
 \beginverse*
 {\nolyrics Вступление: \[A] \[F#m] \[A] \[F#m]}
 \endverse
@@ -1591,7 +1596,7 @@
 \endsong
 
 \beginsong{Видь след от ран}
-\normalsize
+\small
 \beginverse
 След от \[G]ран, в сердце \[C]боль,
 Верь в Рас\[G]пятого, дай людям знать \[D]Путь,
@@ -1830,7 +1835,7 @@
 
 % Этот гимн занят две страницы, поэтому в шестом куплете аккорды продублированы.
 \beginsong{В краю средь гор}
-\normalsize
+\small
 \beginverse*
 {\nolyrics Вступление: \[Em] \[Am] \[D] \[Em] \[Em] \[Am] \[D] \[Em] \[G] \[D] \[Bm] \[C] \[Am] \[D] \[Em]}
 \endverse
@@ -2491,7 +2496,7 @@
 \beginchorus
 Верую в Те\[Am]бя! \[Dm]
 С верою в Те\[G]бя \[C] слабый скажет,
-\[F]Что си\[Dm]лен силой \[E]Господа он.
+\[F]Что си\[Dm]лён силой \[E]Господа он.
 \endchorus
 \textnote{Повторить куплет и припев 2~раза}
 \beginchorus
@@ -2556,7 +2561,7 @@
 Это лю\[Dm]бовь, Божья лю\[Gm]бовь
 Она зальёт \[C]всё, заполнит \[F]всё
 Только лю\[Dm]бовь, Божья лю\[Gm]бовь
-Всё в мире прой\[A]дет кроме Не\[Dm]ё\dots
+Всё в мире прой\[A]дёт кроме Не\[Dm]ё\dots
 \endchorus
 \beginverse
 Я возво^жу к Иисусу сердца взг^ляд,
@@ -2617,7 +2622,7 @@
 \endsong
 
 \beginsong{Как прекрасен Ты}
-\beginverse
+\beginverse*
 {\nolyrics Вступление: \[A] \[D] \[E] \[C#m] \[F#m] \[D] \[E] \[A]}
 \endverse
 \beginverse
@@ -2731,10 +2736,7 @@
 \beginverse
 \[Bm]Благода\[G]рю Те\[D]бя, \[G]благода\[Em]рю Те\[F#7]бя.
 \endverse
-\textnote{Привев}
-\gtab{F#7}{244322}
-\gtab{B7}{224242}
-\gtab{A7}{X02020}
+\textnote{Припев}
 \endsong
 
 \beginsong{Обрати взор к Иисусу}
@@ -2764,7 +2766,7 @@
 ^Кровь Тво^я мне да^ёт про^щенье. \brk ^Выжги ^грех в моём ^сердце, ^Боже,
 ^Свет нам да^руй, ^свет нам да^руй!
 \endverse
-\beginverse
+\beginverse\chordsoff
 ^Вижу ^я Твою ^славу, ^Царь мой~--- \brk в ^лицах ^братьев о^на си^яет!
 ^Ты ве^ди нас от ^славы к ^славе, \brk ^чтоб мы ^стали пись^мом Твоим к ^людям,
 ^Свет нам да^руй, ^свет нам да^руй!
@@ -2809,7 +2811,7 @@
 \[C Em]Протя\[D]ни руки мне с лю\[C]бо\[G]вью, \[D Em D]
 \[C Em]Позо\[D]ви Ты меня к Се\[G]бе. \[Am G G7]
 \[C Em]Воспа\[D]рю к Тебе на крыльях \[C]ве\[G]ры,
-И \[D]полечу с То\[Em]бой, ку\[D]да ведет Твой \[C]дух~---
+И \[D]полечу с То\[Em]бой, ку\[D]да ведёт Твой \[C]дух~---
 Сила \[D]Божьей лю\[C]бви. \[G]
 \endchorus
 \beginverse
@@ -2823,11 +2825,11 @@
 \endsong
 
 \beginsong{Скоро день тот придёт}
-\normalsize
+\small
 \beginverse
 Скоро \[G]день \[C/G]тот при\[G]дёт, \brk дар Твор\[B]ца с небес сой\[Em]дёт,
 Небо \[Am]новое и \[D7]новая зе\[G7/B]мля.
-Город \[C]ждет нас незе\[Cm]мной, \brk мир ца\[G]рит в стране свя\[Em]той.
+Город \[C]ждёт нас незе\[Cm]мной, \brk мир ца\[G]рит в стране свя\[Em]той.
 Что за \[Am]день, радостный \[D]день \[D7]будет \[G]там! \[G7/B]
 Что за \[C]день будет \[Cm]там, когда \[G]встречу я Хри\[Em]ста,
 Он возь\[Am]мёт меня с Со\[D7]бой \brk в край не\[G]бесный, незе\[G7/B]мной,
@@ -2836,11 +2838,11 @@
 \endverse
 \beginverse
 Там не ^бу^дет за^бот, нет нуж^ды и нет невз^год
-Нет пе^чали и следа, \brk лишь лю^бовь царит в серд^цах.
+Нет пе^чали и сле^да, \brk лишь лю^бовь царит в сердцах.
 Будем ^вечно мы тог^да \brk прослав^лять Царя Хри^ста,
 Что за ^день, радостный ^день ^будет ^там! ^
 Скоро ^день тот при^дёт, \brk когда ^Царь царей гря^дёт.
-Он при^дет, друг, за то^бой, \brk чтобы ^взять тебя с Со^бой.
+Он при^дёт, друг, за то^бой, \brk чтобы ^взять тебя с Со^бой.
 Будешь ^ли готов тог^да \brk встретить ^Господа Хри^ста?
 Что за ^день, радостный ^день будет ^там!
 \endverse
@@ -2852,7 +2854,7 @@
 Гос\[Dm]подь наш и \[G]Бог наш.
 \[C]Ты, по \[C/B]милости Сво\[Am]ей, \[Am/G]
 Про\[Dm]сти нас, \[A]Боже, про\[Dm]сти нас,
-\[G] Грешников, про\[C]сти! \[C/B]
+\[G] Грешников, прос\[C]ти! \[C/B]
 \endverse
 \beginchorus
 \[Am] О, Гос\[F]подь, Ты знаешь \[G]всё, чем мы жи\[C]вём: \[B A]
@@ -2884,14 +2886,15 @@
 Возьми ме\[Dm]ня, Отец, в Свою \[C]святость,
 Возьми, как \[B&]жертву, мо\[Am]я жизнь в Те\[Dm]бе.
 \endchorus
+\gtab{A6}{X02222:001111}
 \endsong
 
 \beginsong{Благословен, доверяющий Богу}
 \beginverse
 \[F]Благосло\[G]вен, \[F G] дове\[F]ряющий \[G]Богу! \[F G]
 \[F]Благосло\[G]вен, \[F G] кто \[F]любит Е\[G]го! \[F G]
-\[F]Благосло\[G]вен, \[F G] чьи гре\[F]хи омыты! \[F G]
-\[F]Благосло\[G]вен, \[F G] кто \[F]жаждет Его! \[F G]
+\[F]Благосло\[G]вен, \[F G] чьи гре\[F]хи о\[G]мыты! \[F G]
+\[F]Благосло\[G]вен, \[F G] кто \[F]жаждет Е\[G]го! \[F G]
 \endverse
 \beginverse
 \[D]Не побе\[Em]жит от вра\[D]гов своих,
@@ -3144,7 +3147,7 @@
 \endsong
 
 \beginsong{Да, это тайна для меня}
-\normalsize
+\small
 \beginverse*
 {\nolyrics Вступление: {\[Dm] \[B&] \[Am] \[Am7]}~--- 2~раза}
 \endverse
@@ -3920,6 +3923,7 @@
 Ты, наш Гос\[F7]подь, в почёте и \[B&]славе! \[Gm]
 Мы прекло\[C]няем серд\[C7]ца перед То\[F]бой.
 \endchorus
+\gtab{F2}{103011}
 \endsong
 
 \beginsong{Тронь душу мою}
@@ -4093,7 +4097,7 @@
 \endsong
 
 \beginsong{Что ты сделаешь Богу распятому}
-\normalsize
+\small
 \beginverse*
 {\nolyrics Вступление: \[Dm] \[Gm] \[B&] \[A] \[Dm] \[B&] \[Gm] \[A] (регистр~органа, тихо)}
 \endverse
