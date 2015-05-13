@@ -1,12 +1,11 @@
-\documentclass[fontsize=17pt]{scrartcl}
+\documentclass[17pt]{extarticle}
 
 \usepackage{songs}
 %\usepackage[lyric]{songs}  % Вывести только слова.
 
 % Настроено для xelatex.
 \usepackage{polyglossia}
-\setdefaultlanguage[spelling=modern]{russian}
-\setkeys{russian}{babelshorthands=true}
+\setdefaultlanguage[babelshorthands=true]{russian}
 \setmainfont{DejaVuSerif}
 \setsansfont{DejaVuSans}
 \setmonofont{DejaVuSansMono}
@@ -17,27 +16,33 @@
 %\usepackage[russian]{babel}
 %\usepackage{DejaVuSans}
 
-\usepackage[hmargin=2cm, vmargin=1cm]{geometry}
+% Горизонтальный отступ с краю - 2 см, вертикальный - 5 мм, подвал - 7 мм.
+\usepackage[includefoot, hmargin=2cm, vmargin=0.6cm, foot=0.8cm]{geometry}  % Параметр showframe для отладки.
 %\usepackage[papersize={12.8cm,9.6cm}, hmargin=1cm, vmargin=0cm]{geometry}
 %\geometry{tmargin=1cm,bmargin=1cm,lmargin=2cm,rmargin=2cm}
 
 \renewcommand{\lyricfont}{\sffamily}
 \renewcommand{\scripturefont}{\sffamily\itshape}
 \renewcommand{\printchord}[1]{\sffamily\itshape#1}  % С этой командой аккорды держатся размера текста.
-\renewcommand{\stitlefont}{\sffamily\itshape\large}
-\renewcommand{\printsongnum}[1]{\sffamily\bfseries\large#1}
+\renewcommand{\stitlefont}{\sffamily\itshape\Large}
 
+\nosongnumbers  % Задача по нумерации переложена на страницы.
+%\setlength{\songnumwidth}{2cm}  % Увеличил, иначе сообщения про переполнение \hbox появляются.
+%\renewcommand{\printsongnum}[1]{\sffamily\bfseries\large#1}
 %\renewcommand{\spngnumbgcolor}{white}
 
-\setlength{\songnumwidth}{2cm}  % Увеличил, иначе сообщения про переполнение \hbox появляются.
+\versesep=0.6cm plus 0.3cm minus 0.3cm  % Разрешил увеличивать и уменьшать отступ после куплетов на 3 мм.
 
-\versesep=12pt
-\pagenumbering{gobble}  % Отмена нумерации страниц.
-\songcolumns{1}
+%\pagenumbering{gobble}  % Отмена нумерации страниц.
+
+\songcolumns{0}  % Отключен механизм построения колонок.
+
+\spenalty=-10000  % Заставляет переносится на отдельную страницу.
 
 \DeclareLyricChar{\dots}  % Чтобы между словом и троеточием не ставилось тире из-за близкого аккорда.
 
-%\newindex{mainindex}{songsindex}  % Создание содержания пока не сделано.
+\newindex{mainindex}{songsindex}  % Программу songidx я собрал из исходников отсюда: http://www.ctan.org/tex-archive/macros/latex/contrib/songs
+\indexsongsas{mainindex}{\thepage}  % Индексация по номеру страницы.
 
 %\notenamesin{A}{B}{C}{D}{E}{F}{G}  % Замена названий аккордов (по желанию).
 %\notenamesout{ЛЯ}{СИ}{ДО}{РЕ}{МИ}{ФА}{СОЛЬ}
@@ -48,11 +53,12 @@
 
 \begin{document}
 
-%\showindex{Содержание}{mainindex}
+%\songsection{Гимны прославления}
 
-\songsection{Гимны прославления}
+\begin{songs}{mainindex}
 
-\begin{songs}{}
+\showindex{Содержание}{mainindex}
+
 \beginsong{В небесных доспехах}
 \beginverse*
 {\nolyrics Вступление: \[Em] (в ритме марша)}
@@ -452,6 +458,7 @@
 \endsong
 
 \beginsong{Дай нам светом быть}
+\small
 \beginverse
 Дай нам \[G]светом быть для на\[C]ро\[G]дов,
 Све\[Am]тильни\[D]ком для народов всей зе\[G]мли.
@@ -528,33 +535,6 @@
 \textnote{Повторить 2~раза}
 \endsong
 
-\beginsong{Вся земля хвалу поёт}
-\beginverse*
-{\nolyrics Вступление: \[C] \[G] \[Am] \[F] \[C] \[G] \[Am] \[F]}
-\endverse
-\beginverse\memorize
-\[C] Вся земля хва\[G]лу поёт \brk \[Am] лишь Тебе, наш чудный \[F]Бог.
-\[C] И во всей вселенной \[G]нет, \brk \[Am] кто б с Тобой сравниться \[F]смог \[Em]
-\[Dm] Ты превосходнее все\[C]го на свете, \brk \[F] и нет подобного Те\[G]бе.
-\[Dm] Ты~--- наш Господь, Ты царст\[C]вуешь вовеки,
-\[F] Превознесём Тебя в хва\[G]ле!
-\endverse
-\beginchorus
-Небеса Те\[Am]бе по\[F]ют: <<Святый, \[C]Святый!>>
-Вся земля Те\[Am]бе по\[F]ёт: <<Дос\[C]тоин Ты!>>
-Всё творенье \[Am]возда\[F]ёт \[C]Тебе хвалу, Господь!
-Бла\[F]гословен наш Бог~--- творец все\[G]го!
-\endchorus
-\beginverse\chordsoff
-^ От престола ^Твоего \brk ^ течёт поток живой во^ды,
-^ Для народов ^всей земли \brk ^ сияет свет Твоей люб^ви. ^
-^ Своим присутствием пок^рой всю землю, \brk ^ Пусть свет прольётся в жизнь лю^дей.
-^ Пусть все народы прекло^нят колени
-^ И воспоют хвалу Те^бе.
-\endverse
-\endsong
-
-
 \beginsong{Господь мой, Спаситель}
 \beginverse
 \[G] Господь мой, \[D] Спаситель,
@@ -578,7 +558,6 @@
 \[Em]И неизменен за\[C]вет Твой Гос\[D]подь, Ии\[G]сус.
 \endchorus
 \endsong
-
 
 \beginsong{Господь мой, Ты~--- свет!}
 \beginverse
@@ -753,18 +732,25 @@
 Пото\[F]му узнают \[G]все, что Мо\[C]и у\[E/B]чени\[Am]ки вы,
 Если \[F]будет между \[G]вами лю\[C]бовь.>>
 \endverse
+\beginverse*
+В Евангелии от Иоанна 13 главе 34 стихе \brk Иисус сказал:
+<<Заповедь новую даю вам, да любите друг друга;
+как Я возлюбил вас, \brk так и вы да любите друг друга.
+Потому узнают все, что вы мои ученики,
+если будете иметь любовь между собою.>>
+\endverse
 \endsong
 
-\beginscripture{Иоанна 13:34}
-В Евангелии от Иоанна 13 главе 34 стихе Иисус сказал:
-\scripindent
-\Acolon <<Заповедь новую даю вам, да любите друг друга;
-\Bcolon как Я возлюбил вас, так и вы да любите друг друга.
-\strophe
-\Acolon Потому узнают все, что вы мои ученики,
-\Bcolon если будете иметь любовь между собою.>>
-
-\endscripture
+% Убрано, так как \spenalty=-10000 заставляет переносится на отдельную страницу.
+%\beginscripture{Иоанна 13:34}
+%В Евангелии от Иоанна 13 главе 34 стихе Иисус сказал:
+%\scripindent
+%\Acolon <<Заповедь новую даю вам, да любите друг друга;
+%\Bcolon как Я возлюбил вас, так и вы да любите друг друга.
+%\strophe
+%\Acolon Потому узнают все, что вы мои ученики,
+%\Bcolon если будете иметь любовь между собою.>>
+%\endscripture
 
 \beginsong{Нет подобного Тебе}
 \beginverse
@@ -909,7 +895,6 @@
 \endsong
 
 \beginsong{Вся земля хвалу поёт}
-\small
 \beginverse*
 {\nolyrics Вступление: {\[C] \[G] \[Am] \[F]}~--- 2~раза}
 \endverse
@@ -926,7 +911,7 @@
 Все творенье \[Am]возда\[F]ёт Те\[C]бе хвалу, Господь!
 Бла\[F]гословен наш Бог~--- творец все\[G]го!
 \endchorus
-\beginverse
+\beginverse\chordsoff
 ^ От престола ^Твоего \brk ^ течёт поток живой во^ды,
 ^ Для народов ^всей земли \brk ^ сияет свет Твоей лю^бви. ^
 ^ Своим присутствием по^крой всю землю,
@@ -1091,7 +1076,7 @@
 И я \[G]буду служить Е\[D]му до кон\[G]ца.
 {\nolyrics Проигрыш: \[G]\[D7 G]}
 \endchorus
-\beginverse
+\beginverse\chordsoff
 ^Отныне я все ^выше стремлюсь.
 ^Ночь позади, я ^тьмы не страшусь.
 ^Ближе небесный ^край с каждым днём.
@@ -1380,7 +1365,6 @@
 \endsong
 
 \beginsong{Сын человеческий}
-\small
 \beginverse*
 {\nolyrics Вступление: \[A] \[F#m] \[A] \[F#m]}
 \endverse
@@ -1403,7 +1387,7 @@
 Бог Эмману\[Bm D]ил, Э\[E]мману\[F#m]ил! \[E (на 2-й куплет)]
 \endchorus
 \textnote{Припев 2~раза}
-\beginverse
+\beginverse\chordsoff
 ^Сын человеческий \echo{Сын человеческий}
 ^Наш Вождь Спасения \echo{наш Вождь Спасения},
 ^Наш чрез страдания \echo{наш чрез страдания},
@@ -1467,23 +1451,6 @@
 Ии^сусе, в мо^литве ^мы к Тебе при^хо^дим,
 Те^бе честь и ^славу во^веки по^ем.
 ^Вечное ^слово во плоти я^вилось.
-\endverse
-\endsong
-
-\beginsong{Освяти, Господь}
-\beginverse
-\[C]Пре\[F]будь со \[G]мной, \[C]напо\[F]лняй ме\[G]ня,
-Чтоб с То\[C]бой \[G]был я,
-\[C]Рядом с То\[F]бою, Гос\[G]подь мой.
-Чтоб в Те\[C]бе \[G]был я.
-\[C]Ты~--- мой нас\[F]тавник и \[C]воля Тво\[G]я
-\[Dm]Соль жизни \[G]для ме\[F C]ня.
-\endverse
-\beginverse
-\[C]Освя\[G/B]ти, Го\[Am]сподь,
-Милостью Тво\[Dm7]ей сог\[G]рей мне сердце.
-\[C]Освя\[G/B]ти, Го\[Am]сподь,
-Путь мой от гре\[Dm7]ха к спа\[C]сени\[G]ю.
 \endverse
 \endsong
 
@@ -1639,14 +1606,14 @@
 Бог \[Bm]пришёл на землю, небе\[D]са ликуют,
 Обра\[Bm]тись к Иисусу~--- \[E]час нас\[A]тал.
 \endchorus
-\beginverse
+\beginverse\chordsoff
 ^Люди, поют славу ^люди~---
 Те, кто ^сердце ^для Христа отк^рыл,
 ^Люди, поют славу ^люди.
 Ии^сус с Отцом нас прими^рил.
 \endverse
 \textnote{Припев}
-\beginverse
+\beginverse\chordsoff
 ^Примирил небе^са с землей
 Иску^пил от ^смерти и гре^ха.
 ^Иисус, Ты спа^ситель мой,
@@ -1857,7 +1824,7 @@
 \beginverse\chordsoff
 Слова отца были грусти полны:
 <<В любви моей вы росли как цветы.
-Что ждет вас там в чужих краях.
+Что ждёт вас там в чужих краях.
 Да хранит вас молитва моя>>.
 \endverse
 \beginchorus
@@ -3077,7 +3044,7 @@
 Глубо^ка Его лю^бовь.
 \endverse
 \textnote{Припев}
-\beginverse
+\beginverse\chordsoff
 Высо^ка, как небо, ^Божья любовь,
 Широ^ка, как поле, ^Божья любовь,
 Глубо^ка, как море, ^Божья любовь,
@@ -3255,26 +3222,6 @@
 \gtab{F#sus}{244422:123411}
 \endsong
 
-\beginsong{Как прекрасен Ты}
-\beginverse*
-{\nolyrics Вступление: \[A] \[D] \[E] \[C#m] \[F#m] \[D] \[E] \[A]}
-\endverse
-\beginverse
-\[A]Как пре\[D]красен Ты,
-\[E]Царь ца\[C#m]рей и Гос\[F#m]подь гос\[D]под,
-Как пре\[E]красен \[A]Ты!
-\endverse
-\beginverse
-\[A]Алли\[D]луйя! \[E]Алли\[C#m]луйя! Алли\[F#m]луй\[D]я!
-Как пре\[E]красен \[A]Ты!
-\endverse
-\beginverse
-\[A] Алли\[D]луйя! Те\[E]бе, Господь, \[C#m]слава,
-\[F#m]Честь и о\[D]санна,
-Как пре\[E]красен \[A]Ты!
-\endverse
-\endsong
-
 \beginsong{Как цветок полевой}
 \beginverse*
 {\nolyrics Вступление: \[Gm] \[C] \[F] \[B&] \[Gm] \[A] \[Dm]}
@@ -3339,7 +3286,7 @@
 Лю\[G]бовь Хри\[D]ста~--- побед за\[G]лог,
 Ведь \[C]за ме\[G/B]ня стра\[G/D]дал \[D]наш \[G]Бог.
 \endchorus
-\beginverse
+\beginverse\chordsoff
 ^Оставил в мире ^Свой прес^тол,
 На ^землю к ^грешни^кам со^шёл.
 ^Уничижил, сми^рил Се^бя,
@@ -3375,13 +3322,13 @@
 \[D]Не смутит враг никогда,
 \[G]Если будем \[A]доверять Ии\[D]сусу.
 \endchorus
-\beginverse
+\beginverse\chordsoff
 ^Обещанья Божьи станут нам ясней,
 Если будем доверять Ии^сусу.
 ^Благодать наполнит сердце всё полней,
 ^Если будем ^доверять Ии^сусу
 \endverse
-\beginverse
+\beginverse\chordsoff
 ^Волю Божию научимся творить,
 Если будем доверять Ии^сусу.
 ^Постоянно взоры к небу возносить,
@@ -3402,7 +3349,7 @@
 \[Dm]Исцелять раз\[Dm/B]битые, боль\[Am]ные серд\[F]ца,
 \[Dm]Каждому при\[Dm/B]шедшему отк\[E7]рыть небе\[Am]са.
 \endchorus
-\beginverse
+\beginverse\chordsoff
 Между не^бом свя^тым ^ и греховной зем^лёй
 Пропасть злая ле^жит, ^ разделяя со^бой.
 Хочешь верь, хочешь ^нет, \brk ^ слушай слово Тво^рца: ^
@@ -3434,7 +3381,7 @@
 О \[G]сладостный, сладостный \[C]мир!
 Мир, \[G]мир~--- дар \[D]Божьей лю\[G]бви!
 \endchorus
-\beginverse
+\beginverse\chordsoff
 Ко^гда я Иисуса поз^нал,
 Он ^мир в избавленьем нам ^дал;
 Я ^море любви ощу^щал;
@@ -3840,6 +3787,7 @@
 \endsong
 
 \beginsong{Сильней, чем жизнь}
+\small
 \beginverse*
 {\nolyrics Вступление: {\[Dm] \[F]}~--- 4~раза}
 \endverse
@@ -4211,6 +4159,8 @@
 \[B]И бальзам любви Твоей разо\[E]льётся пусть.
 \endchorus
 \endsong
+
+% 164 гимна, 169 страниц. Первые 4 страницы занимает содержание.
 
 \end{songs}
 \end{document}
