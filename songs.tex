@@ -3,21 +3,29 @@
 \usepackage{songs}
 %\usepackage[lyric]{songs}  % Вывести только слова.
 
-% Настроено для xelatex.
+% Настройки для русского языка (xelatex).
 \usepackage{polyglossia}
 \setdefaultlanguage[babelshorthands=true]{russian}
+
+% Используемые шрифты (xelatex).
 \setmainfont{DejaVuSerif}
 \setsansfont{DejaVuSans}
 \setmonofont{DejaVuSansMono}
 
-% Убранные параметры, так как используется xelatex.
+% Убранные параметры, так как используется xelatex (данные параметры нужны только для pdflatex).
 %\usepackage[utf8]{inputenc}
 %\usepackage[T2A,T1]{fontenc}
 %\usepackage[russian]{babel}
 %\usepackage{DejaVuSans}
 
-% Горизонтальный отступ с краю - 2 см, вертикальный - 5 мм, подвал - 7 мм.
-\usepackage[includefoot, hmargin=2cm, vmargin=0.4cm, foot=0.6cm]{geometry}  % Параметр showframe для отладки.
+% papersize - размер станицы;
+% includefoot - учитывать подвал отдельно;
+% hmargin - горизонтальный отступ;
+% vmargin - вертикальный отступ (вроде, 5мм - это минимум);
+% foot - высота подвала;
+% Для показа краёв полей - параметр showframe.
+\usepackage[papersize={210mm,297mm}, includefoot, hmargin=10mm, vmargin=5mm, foot=8mm]{geometry}
+
 %\usepackage[papersize={12.8cm,9.6cm}, hmargin=1cm, vmargin=0cm]{geometry}
 %\geometry{tmargin=1cm,bmargin=1cm,lmargin=2cm,rmargin=2cm}
 
@@ -31,7 +39,7 @@
 %\renewcommand{\printsongnum}[1]{\sffamily\bfseries\large#1}
 %\renewcommand{\spngnumbgcolor}{white}
 
-\versesep=0.5cm plus 0.3cm minus 0.5cm  % Разрешил увеличивать и уменьшать отступ после куплетов.
+\versesep=5mm plus 3mm minus 5mm  % Разрешил увеличивать и уменьшать отступ после куплетов.
 
 %\pagenumbering{gobble}  % Отмена нумерации страниц.
 
@@ -47,13 +55,17 @@
 %\notenamesin{A}{B}{C}{D}{E}{F}{G}  % Замена названий аккордов (по желанию).
 %\notenamesout{ЛЯ}{СИ}{ДО}{РЕ}{МИ}{ФА}{СОЛЬ}
 
-% При переносах на другую строку предлоги не должны отрываться от следующего слова. Тире не отрывается от предыдущего слова. Для этого используется жёсткий пробел ~.
+% INFO При переносах на другую строку предлоги не должны отрываться от следующего слова. Тире не отрывается от предыдущего слова. Для этого используется жёсткий пробел ~.
 
-% You can explicitly dictate how much of the text following a chord macro is to appear under the chord name by using braces. To exclude text that would normally be drawn under the chord, use a pair of braces that includes the chord macro.
+% INFO You can explicitly dictate how much of the text following a chord macro is to appear under the chord name by using braces. To exclude text that would normally be drawn under the chord, use a pair of braces that includes the chord macro.
+
+% INFO Для уменьшения текста гимна добавить /small после /beginsong{} (пример в гимне "Что ты сделаешь Богу распятому").
+
+% INFO Сборник хорошо подходит для двухсторонней печати и указанием масштаба 100% или actual size.
 
 \renewcommand{\extendpostlude}{  % Изменяем команду показа копирайта и лицензии, добавляя в конец веб-сайт.
 \songcopyright\ \songlicense\unskip
-\ www.jesustoday.ru | версия 1
+\ www.jesustoday.ru | версия 2
 }
 
 \begin{document}
@@ -433,7 +445,6 @@
 \endsong
 
 \beginsong{Когда смолкнет всё}
-\small
 \beginverse\memorize
 \[C] Когда смолкнет \[G]всё, в тиши умолкнет \[F]звук,
 Я к Тебе при\[G]ду.
@@ -456,7 +467,7 @@
 Но те\[F]перь для Тебя,
 Для Те\[G]бя я живу Иисус. \[C]
 \endchorus
-\beginverse
+\beginverse\chordsoff
 ^ Дорогой Ии^сус, не выразить то^го,
 Чего достоин ^Ты.
 ^ Беден я и ^слаб, и всё, что есть,~--- ^Твоё,
@@ -466,7 +477,6 @@
 \endsong
 
 \beginsong{Дай нам светом быть}
-\small
 \beginverse
 Дай нам \[G]светом быть для на\[C]ро\[G]дов,
 Све\[Am]тильни\[D]ком для народов всей зе\[G]мли.
@@ -1575,7 +1585,6 @@
 \endsong
 
 \beginsong{Видь след от ран}
-\small
 \beginverse
 След от \[G]ран, в сердце \[C]боль,
 Верь в Рас\[G]пятого, дай людям знать \[D]Путь,
@@ -1594,7 +1603,7 @@
 Ран, как обещанье \[D]лучших дней,
 След \[G]ран\dots
 \endchorus
-\beginverse
+\beginverse\chordsoff
 Миг най^ди, брось свой вз^гляд
 Через ^холод глаз в истерзанный ^ум,
 Ведь погрязнув, гибнет ^мир~--- как можем мы \brk быть в ^сторо^не?
@@ -1813,9 +1822,9 @@
 \textnote{Припев 2~раза}
 \endsong
 
-% Этот гимн занят две страницы, поэтому в шестом куплете аккорды продублированы.
+% INFO Этот гимн занимает две страницы, поэтому на втором листе в первом куплете аккорды должны быть оставлены включенными. Хотя со всеми выключенными аккордами в куплетах, кроме первого (это допустимо, так как гимп на разных листах физически), гимп умещается в нормально размере шрифта.
+
 \beginsong{В краю средь гор}
-\small
 \beginverse*
 {\nolyrics Вступление: \[Em] \[Am] \[D] \[Em] \[Em] \[Am] \[D] \[Em] \[G] \[D] \[Bm] \[C] \[Am] \[D] \[Em]}
 \endverse
@@ -1848,7 +1857,7 @@
 \beginverse*
 {\nolyrics Проигрыш: \[C] \[D] \[Bm] \[C] \[Am] \[D] \[Em]}
 \endverse
-\beginverse
+\beginverse\chordsoff
 Про^шли го^да, зате^рявшись вда^ли.
 В кра^ю средь ^гор и цве^тущих до^лин
 Встре^чал о^тец сво^их де^тей
@@ -1860,7 +1869,7 @@
 Вся власть моя, и в этом суть,
 На крови я построил свой путь>>.
 \endverse
-\beginverse
+\beginverse\chordsoff
 Вто^рой при^нёс золо^тые да^ры:
 <<Смо^три, о^тец, я мо^гу все ми^ры
 Ку^пить, про^дать ^и слёзы ^всех
@@ -1874,7 +1883,7 @@
 <<Разме\[C]ня\[D]ли бо\[Bm]гатство ду\[C]ши
 Ради \[Am]славы и \[D]блеска мо\[Em]нет>>.
 \endchorus
-\beginverse
+\beginverse\chordsoff
 А ^третий ^сын на ко^ленях сто^ял:
 <<Про^сти, о^тец, я ве^ликим не ^стал,
 Сми^ренным ^был, вра^гов про^щал>>.
@@ -2805,7 +2814,6 @@
 \endsong
 
 \beginsong{Скоро день тот придёт}
-\small
 \beginverse
 Скоро \[G]день \[C/G]тот при\[G]дёт, \brk дар Твор\[B]ца с небес сой\[Em]дёт,
 Небо \[Am]новое и \[D7]новая зе\[G7/B]мля.
@@ -3131,7 +3139,6 @@
 \endsong
 
 \beginsong{Да, это тайна для меня}
-\small
 \beginverse*
 {\nolyrics Вступление: {\[Dm] \[B&] \[Am] \[Am7]}~--- 2~раза}
 \endverse
@@ -3148,7 +3155,7 @@
 Божий \[B&]Сын стал Слу\[F]гой, чтоб с нами \[C]быть!
 Здесь с нами \[Dm]быть. \[B& Am Am7]
 \endchorus
-\beginverse
+\beginverse\chordsoff
 ^ Да, это ^тайна для ме^ня, ^
 ^ Он видел ^все века, Он ^знает все сердца,
 ^ Ему под^властно всё~--- зе^мля и небеса
@@ -3791,7 +3798,6 @@
 \endsong
 
 \beginsong{Сильней, чем жизнь}
-\small
 \beginverse*
 {\nolyrics Вступление: {\[Dm] \[F]}~--- 4~раза}
 \endverse
