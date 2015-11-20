@@ -20,15 +20,13 @@ Then you can just run inside your project folder:
 
 Also, you may be need songidx to make table of contents. Download it from here: http://www.ctan.org/tex-archive/macros/latex/contrib/songs and run `make` inside songidx folder. After that you need to run:
 
-`xelatex songs.tex`
-
-`./songidx.run songsindex.sxd`
+`./songidx.run songs-balzam-1.sxd`
 
 And again with index (be cause index pushing page numbering forward):
 
 `xelatex songs.tex`
 
-`./songidx.run songsindex.sxd`
+`./songidx.run songs-balzam-1.sxd`
 
 `xelatex songs.tex`
 
