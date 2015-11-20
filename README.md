@@ -24,7 +24,11 @@ Also, you may be need songidx to make table of contents. Download it from here: 
 
 `./songidx.run songsindex.sxd`
 
-And again with index:
+And again with index (be cause index pushing page numbering forward):
+
+`xelatex songs.tex`
+
+`./songidx.run songsindex.sxd`
 
 `xelatex songs.tex`
 
