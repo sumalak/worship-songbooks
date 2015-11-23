@@ -1,0 +1,44 @@
+\input{preamble.tex}
+
+\newindex{index}{songs-balzam-2}  % Программу songidx я собрал из исходников отсюда: http://www.ctan.org/tex-archive/macros/latex/contrib/songs
+
+\indexsongsas{index}{\thepage}  % Индексация по номеру страницы.
+
+\begin{document}
+
+%\songsection{Гимны прославления}
+
+\begin{songs}{index}
+
+\showindex{Содержание}{index}
+
+\setcounter{page}{5}  % Резервирование четырёх начальных страниц для содержания.
+
+\beginsong{Восстань, светись, Иерусалим}
+\beginverse*
+{\nolyrics Вступление: \[Dm] \[Gm] \[A] (3 раза) \[Dm] \[A] \[Dm]}
+\endverse
+\beginverse
+Вместо \[Dm]праха и пепла~---
+\[Gm]Белые о\[A]дежды,
+Вместо \[Dm]горя и слёз~---
+\[Gm]Голос Жени\[A]ха,
+Вместо \[Dm]бури и войн~---
+\[Gm]Новые на\[A]дежды,
+Вместо \[Dm]горькой воды~---
+\[A]Молоко и \[Dm]мёд.
+\endverse
+\beginchorus
+Вос\[Dm]стань, све\[Gm]тись, Иеруса\[C]лим,
+Восстань, све\[F]тись, Иеруса\[B&]лим,
+Восстань, све\[Gm]тись, Иеруса\[A]лим,
+Пой, дочь Си\[Dm]она. \[D7]
+Восстань, све\[Gm]тись, Иеруса\[C]лим,
+Восстань, све\[F]тись, Иеруса\[B&]лим,
+Восстань, све\[Gm]тись, Иеруса\[A]лим,
+Твой Царь гря\[Dm]дёт.
+\endchorus
+\endsong
+
+\end{songs}
+\end{document}
