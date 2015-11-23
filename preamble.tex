@@ -1,0 +1,69 @@
+\documentclass[17pt]{extarticle}
+
+\usepackage{songs}
+%\usepackage[lyric]{songs}  % Вывести только слова.
+
+% Настройки для русского языка (xelatex).
+\usepackage{polyglossia}
+\setdefaultlanguage[babelshorthands=true]{russian}
+
+% Используемые шрифты (xelatex).
+\setmainfont{DejaVuSerif}
+\setsansfont{DejaVuSans}
+\setmonofont{DejaVuSansMono}
+
+% Убранные параметры, так как используется xelatex (данные параметры нужны только для pdflatex).
+%\usepackage[utf8]{inputenc}
+%\usepackage[T2A,T1]{fontenc}
+%\usepackage[russian]{babel}
+%\usepackage{DejaVuSans}
+
+% papersize - размер станицы;
+% includefoot - учитывать подвал отдельно;
+% hmargin - горизонтальный отступ;
+% vmargin - вертикальный отступ;
+% foot - высота подвала;
+% Для показа краёв полей - параметр showframe.
+\usepackage[papersize={210mm,297mm}, includefoot, hmargin=10mm, vmargin=5mm, foot=8mm]{geometry}
+
+%\usepackage[papersize={12.8cm,9.6cm}, hmargin=1cm, vmargin=0cm]{geometry}
+%\geometry{tmargin=1cm,bmargin=1cm,lmargin=2cm,rmargin=2cm}
+
+\renewcommand{\lyricfont}{\sffamily}
+\renewcommand{\scripturefont}{\sffamily\itshape}
+\renewcommand{\printchord}[1]{\sffamily\itshape#1}  % С этой командой аккорды держатся размера текста.
+\renewcommand{\stitlefont}{\sffamily\itshape\Large}
+
+\nosongnumbers  % Задача по нумерации переложена на страницы.
+%\setlength{\songnumwidth}{2cm}  % Увеличил, иначе сообщения про переполнение \hbox появляются.
+%\renewcommand{\printsongnum}[1]{\sffamily\bfseries\large#1}
+%\renewcommand{\spngnumbgcolor}{white}
+
+\versesep=5mm plus 3mm minus 5mm  % Разрешил увеличивать и уменьшать отступ после куплетов.
+
+%\pagenumbering{gobble}  % Отмена нумерации страниц.
+
+\songcolumns{0}  % Отключен механизм построения колонок.
+
+\spenalty=-10000  % Заставляет переносится на отдельную страницу.
+
+\DeclareLyricChar{\dots}  % Чтобы между словом и троеточием не ставилось тире из-за близкого аккорда.
+
+\newindex{index}{songs-balzam-1}  % Программу songidx я собрал из исходников отсюда: http://www.ctan.org/tex-archive/macros/latex/contrib/songs
+\indexsongsas{index}{\thepage}  % Индексация по номеру страницы.
+
+%\notenamesin{A}{B}{C}{D}{E}{F}{G}  % Замена названий аккордов (по желанию).
+%\notenamesout{ЛЯ}{СИ}{ДО}{РЕ}{МИ}{ФА}{СОЛЬ}
+
+% INFO При переносах на другую строку предлоги не должны отрываться от следующего слова. Тире не отрывается от предыдущего слова. Для этого используется жёсткий пробел ~.
+
+% INFO You can explicitly dictate how much of the text following a chord macro is to appear under the chord name by using braces. To exclude text that would normally be drawn under the chord, use a pair of braces that includes the chord macro.
+
+% INFO Для уменьшения текста гимна добавить /small после /beginsong{} (пример в гимне "Что ты сделаешь Богу распятому").
+
+% INFO Сборник хорошо подходит для двухсторонней печати и указанием масштаба 100% или actual size.
+
+\renewcommand{\extendpostlude}{  % Изменяем команду показа копирайта и лицензии, добавляя в конец веб-сайт.
+\songcopyright\ \songlicense\unskip
+\ www.jesustoday.ru | v0.2.0
+}

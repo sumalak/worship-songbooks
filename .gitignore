@@ -1,10 +1,9 @@
 # Generated files
-songs-balzam-1.aux
-songs-balzam-1.log
-songs-balzam-1.pdf
-songs-balzam-1.sbx
-songs-balzam-1.sxc
-songs-balzam-1.sxd
+*.aux
+*.log
+*.pdf
+*.sbx
+*.sxc
+*.sxd
 
-# Binary files
 songidx.run
